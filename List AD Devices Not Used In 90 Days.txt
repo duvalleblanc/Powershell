@@ -1,0 +1,5 @@
+$lastLogonDate = (Get-Date).AddDays(-90) 
+# define the last logon date threshold
+
+Get-ADComputer -Filter {LastLogonDate -lt $lastLogonDate} -Properties Name | Sort-Object -Property Name | Select-Object -Property Name | Out-File -FilePath C:\ADComputers.txt
+# Filter out the Devices from Last Logon Date and Output Into a Text File
